@@ -14,7 +14,7 @@ public class Tester {
     
 
     public static void main(String[] args) {
-        File pathBinary = new File("/home/mlyra/firefox28Driver/firefox/firefox.exe");
+        File pathBinary = new File("/home/mlyra/firefox28Driver/firefox/firefox");
         FirefoxBinary firefoxBinary = new FirefoxBinary(pathBinary);
         FirefoxProfile firefoxProfile = new FirefoxProfile();
         WebDriver driver = new FirefoxDriver(firefoxBinary, firefoxProfile);
@@ -25,21 +25,29 @@ public class Tester {
         
         sleep(2);
         
-        WebElement element = driver.findElement(By.linkText("login"));
+        WebElement element = driver.findElement(By.linkText("register new user"));
         element.click();
 
         sleep(2);
 
         element = driver.findElement(By.name("username"));
-        element.sendKeys("pek");
+        element.sendKeys("Henkka");
         element = driver.findElement(By.name("password"));
-        element.sendKeys("akkep");
-        element = driver.findElement(By.name("login"));
+        element.sendKeys("salasana1");
+        element = driver.findElement(By.name("signup"));
         
         sleep(2);
         element.submit();
 
         sleep(3);
+        
+        element = driver.findElement(By.linkText("continue to application mainpage"));
+        element.click();
+        
+        sleep(3);
+        
+        element = driver.findElement(By.linkText("logout"));
+        element.click();
         
         driver.quit();
     }

@@ -22,6 +22,13 @@ public class Stepdefs {
         element.click();          
     } 
     
+    @Given("^new user is selected$")
+    public void new_user_selected() throws Throwable {
+        driver.get(baseUrl);
+        WebElement element = driver.findElement(By.linkText("register new user"));       
+        element.click();          
+    }
+    
     @When("^correct username \"([^\"]*)\" and password \"([^\"]*)\" are given$")
     public void username_correct_and_password_are_given(String username, String password) throws Throwable {
         logInWith(username, password);
@@ -35,6 +42,11 @@ public class Stepdefs {
     @When("^nonexistent username \\\"([^\\\"]*)\\\" and incorrect password \\\"([^\\\"]*)\\\" are given$")
     public void nonexistent_username_and_password_are_given(String username, String password) throws Throwable {
         logInWith(username, password);
+    }
+    
+    @Then("^new user is logged in$")
+    public void new_user_is_logged_in() throws Throwable {
+        pageHasContent("Welcome to Ohtu Application!");
     }
     @Then("^user is logged in$")
     public void user_is_logged_in() throws Throwable {
